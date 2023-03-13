@@ -1,0 +1,12 @@
+---
+version: '3.8'
+services:
+   myjenkins:
+       build: ./docker/front
+       ports:
+         - 9999:8080
+   qa:
+      build: ./docker/back
+      ports:
+         - 7777:8080
+...   

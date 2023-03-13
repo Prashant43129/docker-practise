@@ -1,0 +1,43 @@
+---
+version: '3.8'
+services:
+  myjenkins:
+    image: jenkins/jenkins
+    ports:
+      - 9090:8080
+    networks:
+      - rm
+    container_name: j1
+  qa:
+    image: tomee
+    ports:
+      - 6060:8080
+    networks:
+      - rm
+    container_name: t1
+  prod:
+    image: tomee
+    ports:
+      - 7070:8080
+    networks:
+      - rm
+    container_name: t2
+  mydb:
+    image: postgres
+    environment:
+       POSTGRES_PASSWORD: 43129
+    networks:
+      - bayern
+    container_name: db1
+  myadminer:
+    image: adminer
+    ports:
+      - 5050:8080
+    networks:
+      - bayern
+    container_name: a1
+networks:
+  rm: {}
+  bayern: {}
+...    
+

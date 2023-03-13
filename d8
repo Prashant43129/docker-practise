@@ -1,0 +1,8 @@
+---
+version: '3.8'
+services:
+    myu1:
+      build: ./docker/front/ -f dockerfile1
+      container_name: u1
+      
+...

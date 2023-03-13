@@ -1,0 +1,54 @@
+---
+version: '3.8'
+services:
+  myubuntu:
+    image: ubuntu
+    container_name: linux
+    networks:
+      - n1
+  myapache:
+    image: httpd:2.4
+    ports:
+      - 8181:80
+    container_name: apache
+    networks:
+      - n1
+  mydb:
+    image: mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: 43129
+    container_name: mysql
+    networks:
+      - n1
+  myphp:
+    image: php:7.4-cli
+    ports:
+      - 7171:80
+    container_name: php
+    networks:
+      - n1
+  myjenkins:
+    image: jenkins/jenkins
+    ports:
+     - 8888:8080
+    container_name: jenkins
+    networks:
+       - n2
+  myqa:
+   image: tomee
+   ports:
+      - 7777:8080
+   container_name: qaserver
+   networks:
+      - n2
+  myprod:
+    image: tomee
+    ports:
+      - 6666:8080
+    container_name: prodserver
+    networks:
+       - n2
+networks:
+   n1:
+   n2:
+...
